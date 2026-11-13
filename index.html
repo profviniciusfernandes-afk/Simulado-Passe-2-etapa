@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado PASSE UFMS - 2ª Etapa | Matemática</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos de transição suaves e barra de rolagem discreta */
+        body {
+            background-color: #fafaf9;
+            color: #1c1917;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .fade-in {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-stone-800 selection:text-stone-50">
+
+    <!-- Cabeçalho Principal -->
+    <header class="bg-white border-b border-stone-200 sticky top-0 z-30">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="app.goHome()">
+                <div class="w-9 h-9 rounded-lg bg-stone-800 text-stone-50 flex items-center justify-center font-bold text-sm tracking-tight">
+                    UFMS
+                </div>
+                <div>
+                    <h1 class="text-sm sm:text-base font-semibold text-stone-900 leading-tight">PASSE • 2ª Etapa</h1>
+                    <p class="text-xs text-stone-500 hidden sm:block">Matemática e suas Tecnologias</p>
+                </div>
+            </div>
+
+            <!-- Indicadores Rápidos / Ações -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="app.openEditalModal()" class="text-xs sm:text-sm font-medium text-stone-600 hover:text-stone-900 px-3 py-2 rounded-lg hover:bg-stone-100 transition-colors">
+                    Conteúdo do Edital
+                </button>
+                <button id="btn-header-home" onclick="app.goHome()" class="hidden text-xs sm:text-sm font-medium bg-stone-100 text-stone-800 hover:bg-stone-200 px-3 py-2 rounded-lg transition-colors">
+                    Início
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Área Principal Dinâmica -->
+    <main id="app-container" class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-10">
+        <!-- Conteúdo injetado via JavaScript -->
+    </main>
+
+    <!-- Rodapé Simples -->
+    <footer class="border-t border-stone-200 bg-white py-5 mt-auto">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-stone-500">
+            <p>Simulado baseado no Conteúdo Programático Oficial do PASSE UFMS (2ª Etapa).</p>
+            <p>Banca de referência: FAPEC / UFMS • Estilo Simulado</p>
+        </div>
+    </footer>
+
+    <!-- Modal: Conteúdo Programático Completo do Edital -->
+    <div id="edital-modal" class="fixed inset-0 bg-stone-900/40 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+        <div class="bg-white border border-stone-200 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-xl fade-in">
+            <div class="p-5 border-b border-stone-200 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-stone-500">Edital UFMS • 2ª Etapa</span>
+                    <h2 class="text-lg font-bold text-stone-900">Conteúdo Programático de Matemática</h2>
+                </div>
+                <button onclick="app.closeEditalModal()" class="p-2 rounded-lg text-stone-500 hover:text-stone-900 hover:bg-stone-100 transition-colors" aria-label="Fechar">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-5 overflow-y-auto space-y-5 text-sm text-stone-700 leading-relaxed">
+                <div class="p-4 rounded-xl bg-stone-50 border border-stone-200">
+                    <h3 class="font-semibold text-stone-900 mb-2">Eixo 1: Números e Álgebra</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-stone-600">
+                        <li>Função exponencial: crescimento, análise do comportamento em intervalos numéricos e gráficos.</li>
+                        <li>Sequências numéricas: Progressões Geométricas (PG) e relação com funções exponenciais.</li>
+                        <li>Função logarítmica: logaritmo decimal e natural, gráficos, variação entre grandezas e equações.</li>
+                        <li>Porcentagem e Matemática Financeira: juros simples, juros compostos, taxas de juros, sistemas de amortização e fluxo de caixa.</li>
+                        <li>Modelagem matemática: projeções futuras, rendimentos e dívidas envolvendo funções exponenciais e logarítmicas.</li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-xl bg-stone-50 border border-stone-200">
+                    <h3 class="font-semibold text-stone-900 mb-2">Eixo 2: Geometria e Medidas</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-stone-600">
+                        <li>Semelhança e congruência de triângulos e polígonos; escalas.</li>
+                        <li>Geometria das Transformações: isometrias (reflexão, translação, rotação) e homotetias (ampliação e redução).</li>
+                        <li>Relações métricas no triângulo retângulo e razões trigonométricas.</li>
+                        <li>Trigonometria em triângulos quaisquer: Lei dos Senos e Lei dos Cossenos.</li>
+                        <li>Polígonos regulares: ângulos internos, ângulos externos, ladrilhamento, perímetro e área.</li>
+                        <li>Áreas de figuras geométricas (decomposição, composição) e problemas geométricos modelados por funções de 1º ou 2º grau.</li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-xl bg-stone-50 border border-stone-200">
+                    <h3 class="font-semibold text-stone-900 mb-2">Eixo 3: Probabilidade e Estatística</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-stone-600">
+                        <li>Porcentagem: cálculo de taxas, índices e coeficientes.</li>
+                        <li>Probabilidade básica: espaços amostrais discretos ou contínuos, eventos equiprováveis ou não, contagem de possibilidades.</li>
+                        <li>Probabilidade simples e condicional; eventos sucessivos, mutuamente exclusivos ou não; eventos dependentes e independentes.</li>
+                        <li>Estatística: pesquisa, organização de dados e interpretação de gráficos e tabelas.</li>
+                        <li>Medidas de tendência central (média, moda, mediana), medidas de dispersão (amplitude, variância, desvio padrão) e medidas de posição (quartis, decis e percentis).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="p-4 border-t border-stone-200 flex justify-end">
+                <button onclick="app.closeEditalModal()" class="px-5 py-2.5 rounded-xl bg-stone-800 text-white text-sm font-medium hover:bg-stone-900 transition-colors">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * BANCO DE QUESTÕES DO SIMULADO PASSE UFMS - 2ª ETAPA
+         * Organizado pelos 3 eixos oficiais do Edital da UFMS e seus respectivos temas.
+         * Contém questões de provas anteriores da UFMS/FAPEC e questões modeladas no formato exato da banca.
+         */
+        const EIXOS = [
+            {
+                id: 'numeros-algebra',
+                nome: 'Números e Álgebra',
+                descricao: 'Funções Exponenciais e Logarítmicas, Progressão Geométrica (PG) e Matemática Financeira.',
+                temas: [
+                    'Função Exponencial',
+                    'Progressão Geométrica (PG)',
+                    'Função Logarítmica',
+                    'Matemática Financeira'
+                ]
+            },
+            {
+                id: 'geometria-medidas',
+                nome: 'Geometria e Medidas',
+                descricao: 'Relações Métricas, Trigonometria (Lei dos Senos/Cossenos), Polígonos Regulares, Áreas e Transformações.',
+                temas: [
+                    'Relações Métricas e Trigonometria',
+                    'Polígonos Regulares e Áreas',
+                    'Semelhança e Transformações Geométricas'
+                ]
+            },
+            {
+                id: 'probabilidade-estatistica',
+                nome: 'Probabilidade e Estatística',
+                descricao: 'Probabilidade Simples e Condicional, Eventos Sucessivos, Medidas de Tendência Central, Dispersão e Posição.',
+                temas: [
+                    'Probabilidade e Contagem',
+                    'Estatística Descritiva e Posição'
+                ]
+            }
+        ];
+
+        const QUESTOES = [
+            // =========================================================================
+            // EIXO 1: NÚMEROS E ÁLGEBRA
+            // =========================================================================
+            {
+                id: 'NA-01',
+                eixoId: 'numeros-algebra',
+                tema: 'Função Exponencial',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'Considerando as funções reais f(x) = 2x e g(x) = 2ˣ, e sabendo que os gráficos dessas duas funções se interceptam exatamente nos pontos de abscissas x = 1 e x = 2, é correto afirmar que:',
+                alternativas: [
+                    'Para todo x > 2, tem-se f(x) > g(x).',
+                    'No intervalo aberto ]1, 2[, tem-se g(x) < f(x).',
+                    'Para todo x < 1, tem-se g(x) < f(x).',
+                    'No intervalo fechado [1, 2], tem-se g(x) ≥ f(x).',
+                    'Para x = 0, tem-se f(0) > g(0).'
+                ],
+                correta: 1,
+                resolucao: 'Vamos analisar o comportamento das funções nos intervalos determinados pelas interseções x = 1 e x = 2:\n• Para x = 1: f(1) = 2(1) = 2 e g(1) = 2¹ = 2.\n• Para x = 2: f(2) = 2(2) = 4 e g(2) = 2² = 4.\n• Testando um valor no intervalo aberto ]1, 2[, por exemplo x = 1,5 (ou 3/2):\n  f(1,5) = 2 · 1,5 = 3\n  g(1,5) = 2^(1,5) = √8 ≈ 2,828\nLogo, no intervalo ]1, 2[, a função exponencial g(x) assume valores menores que a função afim f(x), ou seja, g(x) < f(x).'
+            },
+            {
+                id: 'NA-02',
+                eixoId: 'numeros-algebra',
+                tema: 'Função Exponencial',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'Para compreender o crescimento populacional de duas espécies em uma área de preservação do Pantanal sul-mato-grossense, biólogos modelaram a população de roedores por R(t) = 100 · 2ᵗ e a de predadores por P(t) = 25 · 4ᵗ, em que t representa o tempo em anos após o início da observação. Após quantos anos a população de predadores igualará a população de roedores?',
+                alternativas: [
+                    '1 ano.',
+                    '2 anos.',
+                    '3 anos.',
+                    '4 anos.',
+                    '5 anos.'
+                ],
+                correta: 1,
+                resolucao: 'Igualando as duas funções P(t) = R(t):\n25 · 4ᵗ = 100 · 2ᵗ\nDividindo ambos os lados por 25:\n4ᵗ = 4 · 2ᵗ\nEscrevendo na base 2 (lembrando que 4 = 2²):\n(2²)ᵗ = 2² · 2ᵗ\n2^(2t) = 2^(2 + t)\nIgualando os expoentes:\n2t = 2 + t  ⇒  t = 2 anos.'
+            },
+            {
+                id: 'NA-03',
+                eixoId: 'numeros-algebra',
+                tema: 'Progressão Geométrica (PG)',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'Em uma progressão geométrica (PG) crescente de termos positivos, sabe-se que a soma do primeiro termo com o terceiro termo é igual a 20, e que o segundo termo é igual a 6. Nessas condições, a razão q dessa progressão geométrica é:',
+                alternativas: [
+                    'igual a 1/3.',
+                    'igual a 2.',
+                    'igual a 3.',
+                    'igual a 4.',
+                    'igual a 5.'
+                ],
+                correta: 2,
+                resolucao: 'Em uma PG (a₁, a₂, a₃), temos:\na₂ = 6  ⇒  a₁ · q = 6  ⇒  a₁ = 6/q\na₃ = a₂ · q = 6q\nSubstituindo na condição a₁ + a₃ = 20:\n(6/q) + 6q = 20\nMultiplicando toda a equação por q (q > 0):\n6 + 6q² = 20q  ⇒  6q² - 20q + 6 = 0\nDividindo por 2:\n3q² - 10q + 3 = 0\nResolvendo por Bhaskara: Δ = (-10)² - 4(3)(3) = 100 - 36 = 64.\nq = (10 ± 8) / 6  ⇒  q₁ = 18/6 = 3 ou q₂ = 2/6 = 1/3.\nComo a PG é crescente e de termos positivos, q > 1, portanto q = 3.'
+            },
+            {
+                id: 'NA-04',
+                eixoId: 'numeros-algebra',
+                tema: 'Progressão Geométrica (PG)',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Uma startup de tecnologia instalada em Campo Grande (MS) registrou faturamento de R$ 40.000,00 no seu primeiro ano de operação. A equipe financeira projetou um crescimento anual constante de 50% ao ano em relação ao ano anterior durante os primeiros anos. Qual será o faturamento total acumulado por essa empresa ao final dos 4 primeiros anos de operação?',
+                alternativas: [
+                    'R$ 245.000,00',
+                    'R$ 260.000,00',
+                    'R$ 325.000,00',
+                    'R$ 365.000,00',
+                    'R$ 405.000,00'
+                ],
+                correta: 2,
+                resolucao: 'O faturamento anual forma uma PG onde:\n• a₁ = 40.000\n• Razão q = 1 + 0,50 = 1,5 = 3/2\n• Número de termos n = 4\nCalculando termo a termo:\n• Ano 1: 40.000\n• Ano 2: 40.000 × 1,5 = 60.000\n• Ano 3: 60.000 × 1,5 = 90.000\n• Ano 4: 90.000 × 1,5 = 135.000\nSoma acumulada (S₄) = 40.000 + 60.000 + 90.000 + 135.000 = R$ 325.000,00.'
+            },
+            {
+                id: 'NA-05',
+                eixoId: 'numeros-algebra',
+                tema: 'Função Logarítmica',
+                origem: 'PASSE UFMS • 2ª Etapa (Adaptada)',
+                enunciado: 'O nível de intensidade sonora β, medido em decibéis (dB), é dado pela expressão β = 10 · log₁₀(I / I₀), em que I é a intensidade física da onda sonora e I₀ = 10⁻¹² W/m² é o limiar da audição humana. Durante um evento cultural na Concha Acústica em Campo Grande, mediu-se uma intensidade sonora I = 10⁻⁴ W/m². O nível sonoro registrado foi de:',
+                alternativas: [
+                    '40 dB.',
+                    '60 dB.',
+                    '80 dB.',
+                    '100 dB.',
+                    '120 dB.'
+                ],
+                correta: 2,
+                resolucao: 'Substituindo os valores na fórmula fornecida:\nβ = 10 · log₁₀(10⁻⁴ / 10⁻¹²)\nAplicando a propriedade de divisão de potências de mesma base:\n10⁻⁴ / 10⁻¹² = 10^(-4 - (-12)) = 10⁸\nLogo:\nβ = 10 · log₁₀(10⁸)\nComo log₁₀(10⁸) = 8:\nβ = 10 · 8 = 80 dB.'
+            },
+            {
+                id: 'NA-06',
+                eixoId: 'numeros-algebra',
+                tema: 'Função Logarítmica',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Um investidor aplicou um capital inicial C₀ sob regime de juros compostos à taxa efetiva de 10% ao ano. Utilizando a aproximação log₁₀(1,1) ≈ 0,041 e log₁₀(2) ≈ 0,301, o tempo mínimo necessário, em anos inteiros, para que o montante supere o dobro do capital inicial é:',
+                alternativas: [
+                    '6 anos.',
+                    '7 anos.',
+                    '8 anos.',
+                    '9 anos.',
+                    '10 anos.'
+                ],
+                correta: 2,
+                resolucao: 'Queremos que o montante M(t) > 2·C₀:\nC₀ · (1 + 0,10)ᵗ > 2 · C₀\n(1,1)ᵗ > 2\nAplicando log₁₀ nos dois lados da inequação (como a base 10 > 1, o sinal se mantém):\nt · log₁₀(1,1) > log₁₀(2)\nt · 0,041 > 0,301\nt > 0,301 / 0,041  ⇒  t > 301 / 41 ≈ 7,34 anos.\nComo o enunciado pede o tempo mínimo em anos inteiros para que o montante supere o dobro, são necessários 8 anos.'
+            },
+            {
+                id: 'NA-07',
+                eixoId: 'numeros-algebra',
+                tema: 'Matemática Financeira',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'Um boleto bancário no valor nominal de R$ 800,00 foi pago com atraso de 15 dias. O contrato estabelece cobrança de multa fixa de 2% sobre o valor do boleto, acrescida de juros simples de 0,1% ao dia de atraso. O valor total pago pelo cliente para quitar esse boleto foi de:',
+                alternativas: [
+                    'R$ 812,00',
+                    'R$ 816,00',
+                    'R$ 828,00',
+                    'R$ 832,00',
+                    'R$ 840,00'
+                ],
+                correta: 2,
+                resolucao: 'Calculando separadamente os encargos sobre R$ 800,00:\n1) Multa fixa de 2%: 0,02 × 800 = R$ 16,00.\n2) Juros simples de 0,1% ao dia durante 15 dias:\n   Taxa acumulada = 15 × 0,1% = 1,5% = 0,015.\n   Valor dos juros = 0,015 × 800 = R$ 12,00.\nValor total pago = 800 + 16 + 12 = R$ 828,00.'
+            },
+            {
+                id: 'NA-08',
+                eixoId: 'numeros-algebra',
+                tema: 'Matemática Financeira',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'Uma capitalização financeira remunera o capital aplicado à taxa de juros compostos de 2% ao bimestre. Se um estudante depositar R$ 5.000,00 nessa aplicação e não fizer movimentações durante um semestre, qual será o valor aproximado dos juros obtidos ao final desse período?',
+                alternativas: [
+                    'R$ 300,00',
+                    'R$ 306,04',
+                    'R$ 312,16',
+                    'R$ 612,08',
+                    'R$ 5.306,04'
+                ],
+                correta: 1,
+                resolucao: 'Um semestre corresponde a 6 meses, o que equivale a 3 bimestres (n = 3).\nFórmula dos juros compostos: M = C · (1 + i)ⁿ\nM = 5000 · (1 + 0,02)³ = 5000 · (1,02)³\nCalculando (1,02)³:\n• 1,02² = 1,0404\n• 1,0404 × 1,02 = 1,061208\nMontante M = 5000 × 1,061208 = R$ 5.306,04.\nAtenção: a questão pede o valor dos JUROS (J = M - C):\nJ = 5.306,04 - 5.000,00 = R$ 306,04.'
+            },
+            {
+                id: 'NA-09',
+                eixoId: 'numeros-algebra',
+                tema: 'Função Logarítmica',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Em química ambiental, o pH de uma solução aquosa é definido por pH = -log₁₀[H⁺], em que [H⁺] representa a concentração molar de íons hidrogênio (em mol/L). Ao analisar amostras de água de dois pontos distintos de um córrego urbano, verificou-se que a amostra A apresentou pH = 5 e a amostra B apresentou pH = 7. A razão entre a concentração de íons [H⁺] da amostra A e a da amostra B é igual a:',
+                alternativas: [
+                    '2.',
+                    '10.',
+                    '20.',
+                    '100.',
+                    '1.000.'
+                ],
+                correta: 3,
+                resolucao: 'Pela definição pH = -log₁₀[H⁺], temos [H⁺] = 10^(-pH):\n• Para a amostra A (pH = 5): [H⁺]_A = 10⁻⁵ mol/L.\n• Para a amostra B (pH = 7): [H⁺]_B = 10⁻⁷ mol/L.\nCalculando a razão [H⁺]_A / [H⁺]_B:\n10⁻⁵ / 10⁻⁷ = 10^(-5 - (-7)) = 10² = 100.'
+            },
+            {
+                id: 'NA-10',
+                eixoId: 'numeros-algebra',
+                tema: 'Matemática Financeira',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Um trabalhador possui salário bruto mensal de R$ 4.000,00. Sobre esse valor incide um desconto previdenciário de 11% e, sobre o saldo restante após esse primeiro desconto, aplica-se um desconto de 10% referente a imposto de renda retido na fonte. O salário líquido mensal recebido por esse trabalhador é:',
+                alternativas: [
+                    'R$ 3.160,00',
+                    'R$ 3.204,00',
+                    'R$ 3.240,00',
+                    'R$ 3.560,00',
+                    'R$ 3.600,00'
+                ],
+                correta: 1,
+                resolucao: 'Aplicamos os descontos sucessivos sobre o salário bruto de R$ 4.000,00:\n1) Primeiro desconto (11%): 4.000 × (1 - 0,11) = 4.000 × 0,89 = R$ 3.560,00.\n2) Segundo desconto (10% sobre o saldo restante): 3.560 × (1 - 0,10) = 3.560 × 0,90 = R$ 3.204,00.\nNote que descontos sucessivos de 11% e 10% equivalem a um desconto único de 19,9% (e não 21%).'
+            },
+
+            // =========================================================================
+            // EIXO 2: GEOMETRIA E MEDIDAS (10 Questões)
+            // =========================================================================
+            {
+                id: 'GM-01',
+                eixoId: 'geometria-medidas',
+                tema: 'Relações Métricas e Trigonometria',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'Num triângulo retângulo, a altura relativa à hipotenusa mede 24 cm e a projeção do maior cateto sobre a hipotenusa mede 32 cm, conforme ilustrado na figura abaixo. Calcule a medida do menor cateto do triângulo, representado por x.',
+                svg: `<svg viewBox="0 0 320 170" class="w-full max-w-sm mx-auto my-3 bg-stone-50 rounded-xl border border-stone-200 p-2">
+                    <!-- Triângulo Retângulo -->
+                    <polygon points="30,135 290,135 120,35" fill="none" stroke="#292524" stroke-width="2"/>
+                    <!-- Altura h -->
+                    <line x1="120" y1="35" x2="120" y2="135" stroke="#57534e" stroke-width="1.5" stroke-dasharray="4"/>
+                    <!-- Ângulo reto no topo -->
+                    <polyline points="113,43 121,50 128,42" fill="none" stroke="#292524" stroke-width="1.5"/>
+                    <!-- Ângulo reto na base -->
+                    <polyline points="120,125 130,125 130,135" fill="none" stroke="#57534e" stroke-width="1.5"/>
+                    <!-- Rótulos -->
+                    <text x="65" y="78" font-size="14" font-weight="600" fill="#1c1917">x</text>
+                    <text x="126" y="92" font-size="12" fill="#44403c">h = 24 cm</text>
+                    <text x="180" y="153" font-size="12" fill="#44403c">m = 32 cm</text>
+                    <text x="68" y="153" font-size="12" fill="#78716c">n</text>
+                </svg>`,
+                alternativas: [
+                    'x = 18 cm.',
+                    'x = 30 cm.',
+                    'x = 35 cm.',
+                    'x = 40 cm.',
+                    'x = 50 cm.'
+                ],
+                correta: 1,
+                resolucao: 'Pelas relações métricas no triângulo retângulo:\n1) O quadrado da altura é igual ao produto das projeções (h² = m · n):\n   24² = 32 · n  ⇒  576 = 32n  ⇒  n = 576 / 32 = 18 cm.\n2) Aplicando Pitágoras no triângulo retângulo menor à esquerda (ou a relação c² = a · n):\n   x² = h² + n² = 24² + 18² = 576 + 324 = 900\n   x = √900 = 30 cm.'
+            },
+            {
+                id: 'GM-02',
+                eixoId: 'geometria-medidas',
+                tema: 'Polígonos Regulares e Áreas',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'O ângulo central de um polígono regular inscrito em uma circunferência de raio igual a 10 cm mede 60°. O perímetro desse polígono regular é igual a:',
+                alternativas: [
+                    '60 cm.',
+                    '60√3 cm.',
+                    '90 cm.',
+                    '90√3 cm.',
+                    '100 cm.'
+                ],
+                correta: 0,
+                resolucao: 'O ângulo central de um polígono regular de n lados é dado por:\na_c = 360° / n\nComo a_c = 60°:\n60° = 360° / n  ⇒  n = 6 lados (trata-se de um hexágono regular).\nEm um hexágono regular inscrito em uma circunferência de raio R, a medida do lado L é igual ao próprio raio R:\nL = R = 10 cm.\nPortanto, o perímetro é: 6 × 10 cm = 60 cm.'
+            },
+            {
+                id: 'GM-03',
+                eixoId: 'geometria-medidas',
+                tema: 'Relações Métricas e Trigonometria',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Para determinar a largura de um rio no interior de Mato Grosso do Sul sem atravessá-lo, um topógrafo marcou dois pontos A e B na mesma margem, distantes 60 metros entre si, e visou uma árvore C na margem oposta. Ele mediu os ângulos CÂB = 75° e CBA = 45°. Qual é a distância entre o ponto A e a árvore C?',
+                alternativas: [
+                    '20√6 m.',
+                    '30√2 m.',
+                    '30√6 m.',
+                    '40√3 m.',
+                    '60√2 m.'
+                ],
+                correta: 0,
+                resolucao: 'A soma dos ângulos internos do triângulo ABC é 180°:\nÂ + B̂ + Ĉ = 180°  ⇒  75° + 45° + Ĉ = 180°  ⇒  Ĉ = 60°.\nAplicando a Lei dos Senos no triângulo ABC para encontrar o lado AC (oposto ao ângulo B̂ = 45°), sabendo que AB = 60 m (oposto ao ângulo Ĉ = 60°):\nAC / sen(45°) = AB / sen(60°)\nAC / (√2 / 2) = 60 / (√3 / 2)\nSimplificando o denominador 2:\nAC / √2 = 60 / √3\nAC = (60 · √2) / √3\nRacionalizando (multiplicando numerador e denominador por √3):\nAC = (60 · √6) / 3 = 20√6 m.'
+            },
+            {
+                id: 'GM-04',
+                eixoId: 'geometria-medidas',
+                tema: 'Polígonos Regulares e Áreas',
+                origem: 'PASSE UFMS • 2ª Etapa (Adaptada)',
+                enunciado: 'Uma praça pública possui o formato de um trapézio retângulo ABCD, conforme esquema abaixo, onde AB = 20 m, CD = 32 m e a altura AD = 16 m. Deseja-se revestir toda a área dessa praça com piso intertravado. Qual é a área total a ser revestida?',
+                svg: `<svg viewBox="0 0 300 155" class="w-full max-w-xs mx-auto my-3 bg-stone-50 rounded-xl border border-stone-200 p-2">
+                    <polygon points="50,30 180,30 250,125 50,125" fill="#e7e5e4" stroke="#292524" stroke-width="2"/>
+                    <polyline points="50,115 60,115 60,125" fill="none" stroke="#292524" stroke-width="1.5"/>
+                    <polyline points="50,40 60,40 60,30" fill="none" stroke="#292524" stroke-width="1.5"/>
+                    <text x="100" y="22" font-size="12" font-weight="600" fill="#1c1917">AB = 20 m</text>
+                    <text x="125" y="142" font-size="12" font-weight="600" fill="#1c1917">CD = 32 m</text>
+                    <text x="8" y="82" font-size="12" font-weight="600" fill="#1c1917">16 m</text>
+                </svg>`,
+                alternativas: [
+                    '320 m².',
+                    '384 m².',
+                    '416 m².',
+                    '512 m².',
+                    '832 m².'
+                ],
+                correta: 2,
+                resolucao: 'Podemos calcular a área do trapézio diretamente pela fórmula ou decompondo-o em um retângulo de 20 m × 16 m e um triângulo retângulo de base (32 - 20) = 12 m e altura 16 m:\n• Área do retângulo = 20 × 16 = 320 m².\n• Área do triângulo = (12 × 16) / 2 = 96 m².\n• Área total = 320 + 96 = 416 m².'
+            },
+            {
+                id: 'GM-05',
+                eixoId: 'geometria-medidas',
+                tema: 'Semelhança e Transformações Geométricas',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'No plano cartesiano, um triângulo ABC tem vértices A(2, 1), B(4, 1) e C(4, 4). Aplica-se a esse triângulo uma transformação geométrica de homotetia centrada na origem O(0, 0) com razão de ampliação k = 3, seguida de uma reflexão em relação ao eixo das ordenadas (eixo y). As coordenadas do vértice C" após essas duas transformações são:',
+                alternativas: [
+                    '(-12, 12)',
+                    '(12, -12)',
+                    '(-4, 4)',
+                    '(-12, -12)',
+                    '(4, -12)'
+                ],
+                correta: 0,
+                resolucao: 'Partindo do vértice C(4, 4):\n1) Homotetia centrada na origem com razão k = 3: multiplica-se ambas as coordenadas por 3.\n   C\' = (3 × 4, 3 × 4) = (12, 12).\n2) Reflexão em relação ao eixo y (ordenadas): mantém-se a ordenada y e inverte-se o sinal da abscissa x.\n   C" = (-12, 12).'
+            },
+            {
+                id: 'GM-06',
+                eixoId: 'geometria-medidas',
+                tema: 'Semelhança e Transformações Geométricas',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Na planta baixa de um empreendimento imobiliário desenhada na escala 1 : 250, uma sala comercial retangular possui dimensões de 3,2 cm por 4,8 cm. Qual é a área real dessa sala comercial em metros quadrados?',
+                alternativas: [
+                    '38,4 m².',
+                    '60,0 m².',
+                    '76,8 m².',
+                    '96,0 m².',
+                    '153,6 m².'
+                ],
+                correta: 3,
+                resolucao: 'A escala 1 : 250 indica que cada 1 cm no desenho equivale a 250 cm = 2,5 m na realidade.\nConvertendo as dimensões reais:\n• Largura real = 3,2 × 2,5 m = 8,0 m.\n• Comprimento real = 4,8 × 2,5 m = 12,0 m.\nCalculando a área real:\nÁrea = 8,0 m × 12,0 m = 96,0 m².'
+            },
+            {
+                id: 'GM-07',
+                eixoId: 'geometria-medidas',
+                tema: 'Polígonos Regulares e Áreas',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Deseja-se cercar um terreno retangular às margens de um córrego utilizando 120 metros de tela, de modo que o lado paralelo ao córrego não precisará de cerca (apenas os outros três lados serão cercados). Nessas condições, qual é a área máxima possível para esse terreno?',
+                alternativas: [
+                    '900 m².',
+                    '1.200 m².',
+                    '1.600 m².',
+                    '1.800 m².',
+                    '2.400 m².'
+                ],
+                correta: 3,
+                resolucao: 'Sejam x os dois lados perpendiculares ao córrego e y o lado paralelo ao córrego.\nComo o total de tela é 120 m:\n2x + y = 120  ⇒  y = 120 - 2x.\nA área A(x) do retângulo é modelada pela função quadrática:\nA(x) = x · y = x · (120 - 2x) = -2x² + 120x.\nO valor máximo ocorre no vértice da parábola:\nx_v = -b / (2a) = -120 / (2 · (-2)) = 30 m.\nLogo, y = 120 - 2(30) = 60 m.\nÁrea máxima = 30 × 60 = 1.800 m².'
+            },
+            {
+                id: 'GM-08',
+                eixoId: 'geometria-medidas',
+                tema: 'Relações Métricas e Trigonometria',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Em uma reserva ambiental, duas trilhas retilíneas partem de um mesmo posto de observação P formando entre si um ângulo de 60°. Após caminhar 5 km pela primeira trilha até o ponto A e 8 km pela segunda trilha até o ponto B, qual é a distância em linha reta entre os pontos A e B?',
+                alternativas: [
+                    '6 km.',
+                    '7 km.',
+                    '√69 km.',
+                    '√89 km.',
+                    '9 km.'
+                ],
+                correta: 1,
+                resolucao: 'Aplicando a Lei dos Cossenos no triângulo PAB, onde PA = 5 km, PB = 8 km e o ângulo entre eles é 60° (cos 60° = 1/2):\nAB² = PA² + PB² - 2 · PA · PB · cos(60°)\nAB² = 5² + 8² - 2 · 5 · 8 · (1/2)\nAB² = 25 + 64 - 40\nAB² = 49  ⇒  AB = √49 = 7 km.'
+            },
+            {
+                id: 'GM-09',
+                eixoId: 'geometria-medidas',
+                tema: 'Polígonos Regulares e Áreas',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Um arquiteto está projetando o ladrilhamento do piso de um salão utilizando apenas polígonos regulares congruentes de um único tipo, de modo que se encaixem perfeitamente ao redor de cada vértice sem deixar espaços vazios nem sobreposições. Sabendo que cada ângulo interno do polígono escolhido mede 120°, qual é esse polígono e quantas peças se encontram em cada vértice?',
+                alternativas: [
+                    'Quadrado; 4 peças por vértice.',
+                    'Pentágono regular; 3 peças por vértice.',
+                    'Hexágono regular; 3 peças por vértice.',
+                    'Octógono regular; 3 peças por vértice.',
+                    'Triângulo equilátero; 6 peças por vértice.'
+                ],
+                correta: 2,
+                resolucao: '1) Se o ângulo interno é a_i = 120°, então o ângulo externo é a_e = 180° - 120° = 60°.\n   Como a soma dos ângulos externos de qualquer polígono convexo é 360°:\n   n = 360° / 60° = 6 lados (Hexágono regular).\n2) Para preencher uma volta completa (360°) ao redor de um vértice sem sobras:\n   Quantidade de peças = 360° / 120° = 3 peças por vértice.'
+            },
+            {
+                id: 'GM-10',
+                eixoId: 'geometria-medidas',
+                tema: 'Semelhança e Transformações Geométricas',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Em um determinado horário da tarde, um poste vertical de 6 metros de altura projeta sobre o solo plano e horizontal uma sombra de 4 metros de comprimento. No mesmo instante, um edifício próximo projeta uma sombra de 28 metros. Desprezando a espessura do poste, a altura desse edifício é igual a:',
+                alternativas: [
+                    '36 m.',
+                    '40 m.',
+                    '42 m.',
+                    '45 m.',
+                    '48 m.'
+                ],
+                correta: 2,
+                resolucao: 'Como os raios solares incidem paralelamente no mesmo instante, os triângulos retângulos formados pelo poste e sua sombra e pelo edifício e sua sombra são semelhantes (caso AA):\nAltura do edifício (H) / Sombra do edifício (28) = Altura do poste (6) / Sombra do poste (4)\nH / 28 = 6 / 4\nH = (28 × 6) / 4 = 7 × 6 = 42 metros.'
+            },
+
+            // =========================================================================
+            // EIXO 3: PROBABILIDADE E ESTATÍSTICA (10 Questões)
+            // =========================================================================
+            {
+                id: 'PE-01',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Probabilidade e Contagem',
+                origem: 'PASSE UFMS • 2ª Etapa (Triênio 2023-2025)',
+                enunciado: 'Uma sorveteria lançou uma promoção na qual o cliente monta seu copo de açaí escolhendo 1 tipo de fruta entre 4 opções disponíveis (banana, morango, kiwi e manga) e 2 acompanhamentos distintos entre 4 opções (granola, leite em pó, paçoca e mel). De quantas maneiras diferentes um cliente pode montar seu açaí nessa promoção?',
+                alternativas: [
+                    '8.',
+                    '12.',
+                    '18.',
+                    '24.',
+                    '48.'
+                ],
+                correta: 3,
+                resolucao: 'Dividimos a escolha em duas etapas independentes:\n1) Escolha da fruta: 4 opções possíveis.\n2) Escolha de 2 acompanhamentos distintos dentre 4 (a ordem não importa, logo é uma combinação):\n   C(4, 2) = (4 × 3) / (2 × 1) = 6 maneiras.\nPelo Princípio Fundamental da Contagem (multiplicativo):\nTotal de maneiras = 4 × 6 = 24.'
+            },
+            {
+                id: 'PE-02',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Probabilidade e Contagem',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Em uma turma do 2º ano do Ensino Médio com 40 estudantes, 25 estão inscritos no PASSE UFMS, 18 praticam alguma atividade esportiva na escola e 10 participam de ambos (estão inscritos no PASSE e praticam esporte). Sorteando-se ao acaso um estudante dessa turma e sabendo que ele pratica atividade esportiva, qual é a probabilidade de ele também estar inscrito no PASSE UFMS?',
+                alternativas: [
+                    '1/4.',
+                    '2/5.',
+                    '5/9.',
+                    '5/8.',
+                    '33/40.'
+                ],
+                correta: 2,
+                resolucao: 'Trata-se de uma probabilidade condicional P(PASSE | Esporte):\n• O espaço amostral fica reduzido aos estudantes que praticam esporte: n(Esporte) = 18.\n• Dentre esses 18 estudantes, os que também estão inscritos no PASSE são: n(PASSE ∩ Esporte) = 10.\nPortanto:\nP(PASSE | Esporte) = 10 / 18 = 5 / 9.'
+            },
+            {
+                id: 'PE-03',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Probabilidade e Contagem',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Uma urna contém 6 bolas brancas e 4 bolas pretas, idênticas em tamanho e massa. Retiram-se sucessivamente e sem reposição 2 bolas dessa urna. Qual é a probabilidade de que ambas as bolas retiradas sejam pretas?',
+                alternativas: [
+                    '2/15.',
+                    '4/25.',
+                    '1/6.',
+                    '2/5.',
+                    '1/3.'
+                ],
+                correta: 0,
+                resolucao: 'Como as retiradas são sucessivas e SEM reposição, os eventos são dependentes:\n• Probabilidade da 1ª bola ser preta: P(A) = 4 / 10 = 2 / 5.\n• Após retirar 1 bola preta, restam 9 bolas na urna, sendo 3 pretas.\n• Probabilidade da 2ª bola ser preta: P(B|A) = 3 / 9 = 1 / 3.\nMultiplicando as probabilidades:\nP(A ∩ B) = (2/5) × (1/3) = 2 / 15.'
+            },
+            {
+                id: 'PE-04',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Estatística Descritiva e Posição',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Durante uma semana de monitoramento climático em Dourados (MS), registraram-se as seguintes temperaturas máximas diárias (em °C): 28, 31, 30, 34, 29, 31 e 34. Analisando esse conjunto de dados, a mediana e o terceiro quartil (Q₃) dessas temperaturas são, respectivamente:',
+                alternativas: [
+                    '30 °C e 31 °C.',
+                    '31 °C e 33 °C.',
+                    '31 °C e 34 °C.',
+                    '32 °C e 34 °C.',
+                    '34 °C e 34 °C.'
+                ],
+                correta: 2,
+                resolucao: 'Primeiro, ordenamos o rol (conjunto de 7 dados) em ordem crescente:\n[ 28 , 29 , 30 , 31 , 31 , 34 , 34 ]\n• A mediana (Q₂) é o termo central (4ª posição): 31 °C.\n• A metade superior dos dados (acima da mediana) é formada pelos 3 últimos valores: [ 31 , 34 , 34 ].\n• O terceiro quartil (Q₃) é a mediana dessa metade superior (6ª posição do rol): 34 °C.'
+            },
+            {
+                id: 'PE-05',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Estatística Descritiva e Posição',
+                origem: 'PASSE UFMS • 2ª Etapa (Adaptada)',
+                enunciado: 'Cinco candidatos a uma vaga de monitoria obtiveram as seguintes notas em uma avaliação: 6, 7, 8, 9 e 10. Para avaliar a regularidade do desempenho do grupo, calculou-se a variância populacional dessas notas. O valor da variância obtida foi:',
+                alternativas: [
+                    '1,0.',
+                    '1,4.',
+                    '2,0.',
+                    '2,5.',
+                    '8,0.'
+                ],
+                correta: 2,
+                resolucao: '1) Calculamos a média aritmética (x̄):\n   x̄ = (6 + 7 + 8 + 9 + 10) / 5 = 40 / 5 = 8.\n2) Calculamos os desvios quadráticos em relação à média (xᵢ - 8)²:\n   • (6 - 8)² = (-2)² = 4\n   • (7 - 8)² = (-1)² = 1\n   • (8 - 8)² = 0² = 0\n   • (9 - 8)² = 1² = 1\n   • (10 - 8)² = 2² = 4\n3) A variância populacional (σ²) é a média dos quadrados dos desvios:\n   σ² = (4 + 1 + 0 + 1 + 4) / 5 = 10 / 5 = 2,0.'
+            },
+            {
+                id: 'PE-06',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Estatística Descritiva e Posição',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Em um levantamento sobre a nota de corte de um curso de graduação da UFMS, constatou-se que a pontuação obtida por determinado candidato corresponde ao 85º percentil (P₈₅) entre todos os 1.200 inscritos. Isso significa estatisticamente que:',
+                alternativas: [
+                    'O candidato acertou exatamente 85% das questões da prova.',
+                    '85 candidatos obtiveram nota superior à desse candidato.',
+                    'Pelo menos 85% dos inscritos obtiveram nota menor ou igual à desse candidato.',
+                    'A nota do candidato foi 85 pontos acima da média geral.',
+                    'O candidato ficou classificado exatamente na 85ª colocação geral.'
+                ],
+                correta: 2,
+                resolucao: 'Por definição estatística, o k-ésimo percentil (P_k) divide um conjunto de dados ordenados de modo que pelo menos k% dos valores sejam menores ou iguais a ele (e no máximo (100 - k)% sejam maiores). Portanto, estar no 85º percentil significa que pelo menos 85% dos inscritos obtiveram pontuação menor ou igual à do candidato.'
+            },
+            {
+                id: 'PE-07',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Probabilidade e Contagem',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Um alvo circular de raio 10 cm possui, em seu interior e concêntrico a ele, um círculo central de raio 2 cm. Um dardo é lançado aleatoriamente em direção ao alvo e sempre o atinge, com igual probabilidade em qualquer ponto de sua superfície (espaço amostral contínuo). Qual é a probabilidade de o dardo atingir a região externa ao círculo central (a coroa circular)?',
+                svg: `<svg viewBox="0 0 180 150" class="w-full max-w-[200px] mx-auto my-3 bg-stone-50 rounded-xl border border-stone-200 p-2">
+                    <circle cx="90" cy="75" r="55" fill="#e7e5e4" stroke="#292524" stroke-width="2"/>
+                    <circle cx="90" cy="75" r="14" fill="#ffffff" stroke="#292524" stroke-width="1.5"/>
+                    <line x1="90" y1="75" x2="104" y2="75" stroke="#292524" stroke-width="1.2"/>
+                    <line x1="90" y1="75" x2="90" y2="20" stroke="#57534e" stroke-width="1.2" stroke-dasharray="3"/>
+                    <text x="93" y="45" font-size="10" font-weight="600" fill="#1c1917">R=10</text>
+                    <text x="92" y="86" font-size="9" font-weight="600" fill="#1c1917">r=2</text>
+                </svg>`,
+                alternativas: [
+                    '4%.',
+                    '20%.',
+                    '80%.',
+                    '92%.',
+                    '96%.'
+                ],
+                correta: 4,
+                resolucao: 'Em probabilidade geométrica (espaço amostral contínuo), a probabilidade é a razão entre as áreas:\n• Área total do alvo: A_total = π · R² = π · 10² = 100π cm².\n• Área do círculo central: A_centro = π · r² = π · 2² = 4π cm².\n• Probabilidade de acertar o centro: P(centro) = 4π / 100π = 0,04 = 4%.\n• Probabilidade complementar (atingir a coroa externa): P(coroa) = 100% - 4% = 96%.'
+            },
+            {
+                id: 'PE-08',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Probabilidade e Contagem',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Lançam-se simultaneamente dois dados cúbicos honestos, um branco e um cinza, com faces numeradas de 1 a 6. Qual é a probabilidade de que a soma dos números obtidos nas faces superiores seja igual a 8 OU que ambos os dados apresentem o mesmo número (eventos não mutuamente exclusivos)?',
+                alternativas: [
+                    '5/36.',
+                    '1/6.',
+                    '5/18.',
+                    '11/36.',
+                    '1/3.'
+                ],
+                correta: 2,
+                resolucao: 'O espaço amostral total possui 6 × 6 = 36 resultados equiprováveis.\n• Evento A (soma igual a 8): {(2,6), (3,5), (4,4), (5,3), (6,2)} → n(A) = 5.\n• Evento B (faces iguais): {(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)} → n(B) = 6.\n• Interseção A ∩ B (soma 8 E faces iguais): {(4,4)} → n(A ∩ B) = 1.\nPela regra da união de eventos:\nP(A ∪ B) = P(A) + P(B) - P(A ∩ B) = (5 + 6 - 1) / 36 = 10 / 36 = 5 / 18.'
+            },
+            {
+                id: 'PE-09',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Estatística Descritiva e Posição',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Uma empresa de transporte coletivo registrou o número de passageiros transportados em 5 viagens de uma mesma linha: 32, 45, 38, 41 e 44. Se em cada uma dessas 5 viagens o número de passageiros aumentasse em exatamente 6 unidades, o que ocorreria com a média aritmética e com o desvio padrão dessa distribuição, respectivamente?',
+                alternativas: [
+                    'A média aumentaria em 6 unidades e o desvio padrão aumentaria em 6 unidades.',
+                    'A média aumentaria em 6 unidades e o desvio padrão permaneceria inalterado.',
+                    'A média permaneceria inalterada e o desvio padrão aumentaria em 6 unidades.',
+                    'Ambos aumentariam em 1,2 unidade.',
+                    'Ambos permaneceriam inalterados.'
+                ],
+                correta: 1,
+                resolucao: 'Propriedade fundamental das medidas de tendência central e dispersão:\n• Ao somar uma constante c = 6 a todos os valores de um conjunto de dados, a média aritmética também aumenta em c = 6 unidades.\n• Como todos os valores se deslocam igualmente, as distâncias (desvios) de cada dado em relação à nova média permanecem exatamente as mesmas. Portanto, a variância e o desvio padrão NÃO se alteram.'
+            },
+            {
+                id: 'PE-10',
+                eixoId: 'probabilidade-estatistica',
+                tema: 'Estatística Descritiva e Posição',
+                origem: 'Estilo PASSE UFMS • 2ª Etapa',
+                enunciado: 'Em uma escola estadual com 200 estudantes matriculados no 2º ano do Ensino Médio, realizou-se um simulado diagnóstico. Os resultados foram organizados em decis, e constatou-se que a nota mínima necessária para integrar o grupo dos 20% melhores desempenhos da escola corresponde ao:',
+                alternativas: [
+                    '2º decil (D₂).',
+                    '5º decil (D₅).',
+                    '8º decil (D₈).',
+                    '9º decil (D₉).',
+                    '1º quartil (Q₁).'
+                ],
+                correta: 2,
+                resolucao: 'Os decis (D₁, D₂, ..., D₉) dividem um conjunto de dados ordenados em 10 partes iguais, cada uma contendo 10% das observações:\n• O 8º decil (D₈) deixa 80% dos dados abaixo ou iguais a ele e separa os 20% maiores valores (superiores) da distribuição.\nLogo, integrar os 20% melhores desempenhos equivale a estar acima do 8º decil (D₈).'
+            }
+        ];
+
+        /**
+         * ESTADO E CONTROLADOR PRINCIPAL DA APLICAÇÃO
+         */
+        const app = {
+            state: {
+                view: 'home', // 'home' | 'quiz' | 'result'
+                selectedEixo: 'todos',
+                selectedTema: 'todos',
+                mode: 'treino', // 'treino' (feedback imediato) | 'prova' (feedback apenas ao final)
+                questions: [],
+                currentIndex: 0,
+                answers: {}, // { questionId: selectedOptionIndex }
+                revealed: {}, // { questionId: boolean }
+                timerSeconds: 0,
+                timerInterval: null,
+                history: JSON.parse(localStorage.getItem('passe_ufms_2_stats') || '{"answered":0,"correct":0}')
+            },
+
+            init() {
+                this.renderHome();
+            },
+
+            saveStats(correctCount, totalCount) {
+                this.state.history.answered += totalCount;
+                this.state.history.correct += correctCount;
+                localStorage.setItem('passe_ufms_2_stats', JSON.stringify(this.state.history));
+            },
+
+            resetStats() {
+                this.state.history = { answered: 0, correct: 0 };
+                localStorage.removeItem('passe_ufms_2_stats');
+                this.renderHome();
+            },
+
+            openEditalModal() {
+                const modal = document.getElementById('edital-modal');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            },
+
+            closeEditalModal() {
+                const modal = document.getElementById('edital-modal');
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            },
+
+            goHome() {
+                this.stopTimer();
+                this.state.view = 'home';
+                document.getElementById('btn-header-home').classList.add('hidden');
+                this.renderHome();
+            },
+
+            selectEixo(eixoId) {
+                this.state.selectedEixo = eixoId;
+                this.state.selectedTema = 'todos';
+                this.renderHome();
+            },
+
+            selectTema(tema) {
+                this.state.selectedTema = tema;
+                this.renderHome();
+            },
+
+            selectMode(mode) {
+                this.state.mode = mode;
+                this.renderHome();
+            },
+
+            getFilteredQuestions() {
+                return QUESTOES.filter(q => {
+                    const matchEixo = this.state.selectedEixo === 'todos' || q.eixoId === this.state.selectedEixo;
+                    const matchTema = this.state.selectedTema === 'todos' || q.tema === this.state.selectedTema;
+                    return matchEixo && matchTema;
+                });
+            },
+
+            startQuiz() {
+                const filtered = this.getFilteredQuestions();
+                if (filtered.length === 0) return;
+
+                // Embaralha levemente se for simulado completo, ou mantém ordem didática por tema
+                const pool = this.state.selectedEixo === 'todos'
+                    ? [...filtered].sort(() => Math.random() - 0.5)
+                    : [...filtered];
+
+                this.state.questions = pool;
+                this.state.currentIndex = 0;
+                this.state.answers = {};
+                this.state.revealed = {};
+                this.state.timerSeconds = 0;
+                this.state.view = 'quiz';
+
+                document.getElementById('btn-header-home').classList.remove('hidden');
+                this.startTimer();
+                this.renderQuiz();
+            },
+
+            startTimer() {
+                this.stopTimer();
+                this.state.timerInterval = setInterval(() => {
+                    this.state.timerSeconds++;
+                    const timerEl = document.getElementById('quiz-timer');
+                    if (timerEl) {
+                        timerEl.textContent = this.formatTime(this.state.timerSeconds);
+                    }
+                }, 1000);
+            },
+
+            stopTimer() {
+                if (this.state.timerInterval) {
+                    clearInterval(this.state.timerInterval);
+                    this.state.timerInterval = null;
+                }
+            },
+
+            formatTime(sec) {
+                const m = Math.floor(sec / 60).toString().padStart(2, '0');
+                const s = (sec % 60).toString().padStart(2, '0');
+                return `${m}:${s}`;
+            },
+
+            chooseOption(optionIndex) {
+                const q = this.state.questions[this.state.currentIndex];
+                // Se já foi revelada no modo treino, não permite alterar
+                if (this.state.mode === 'treino' && this.state.revealed[q.id]) return;
+
+                this.state.answers[q.id] = optionIndex;
+                if (this.state.mode === 'treino') {
+                    this.state.revealed[q.id] = true;
+                }
+                this.renderQuiz();
+            },
+
+            nextQuestion() {
+                if (this.state.currentIndex < this.state.questions.length - 1) {
+                    this.state.currentIndex++;
+                    this.renderQuiz();
+                } else {
+                    this.finishQuiz();
+                }
+            },
+
+            prevQuestion() {
+                if (this.state.currentIndex > 0) {
+                    this.state.currentIndex--;
+                    this.renderQuiz();
+                }
+            },
+
+            jumpToQuestion(idx) {
+                this.state.currentIndex = idx;
+                this.renderQuiz();
+            },
+
+            finishQuiz() {
+                this.stopTimer();
+                this.state.view = 'result';
+
+                let correct = 0;
+                this.state.questions.forEach(q => {
+                    if (this.state.answers[q.id] === q.correta) correct++;
+                });
+
+                this.saveStats(correct, this.state.questions.length);
+                this.renderResult();
+            },
+
+            // =========================================================================
+            // RENDERIZAÇÃO DA TELA INICIAL
+            // =========================================================================
+            renderHome() {
+                const container = document.getElementById('app-container');
+                const filteredCount = this.getFilteredQuestions().length;
+                const currentEixoObj = EIXOS.find(e => e.id === this.state.selectedEixo);
+
+                const accuracy = this.state.history.answered > 0
+                    ? Math.round((this.state.history.correct / this.state.history.answered) * 100)
+                    : 0;
+
+                container.innerHTML = `
+                    <div class="space-y-8 fade-in">
+                        <!-- Cabeçalho de Boas-vindas -->
+                        <div class="bg-white border border-stone-200 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div class="space-y-2 max-w-2xl">
+                                <span class="inline-block text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md bg-stone-100 text-stone-700">
+                                    Preparatório Oficial • 2º Ano EM
+                                </span>
+                                <h2 class="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+                                    Simulado de Matemática — PASSE UFMS
+                                </h2>
+                                <p class="text-sm sm:text-base text-stone-600 leading-relaxed">
+                                    Pratique com questões de provas anteriores da UFMS/FAPEC e exercícios inéditos organizados pelos três eixos do edital da 2ª etapa.
+                                </p>
+                            </div>
+
+                            <!-- Card Resumo de Desempenho -->
+                            <div class="bg-stone-50 border border-stone-200 rounded-xl p-4 min-w-[210px] flex flex-col justify-between">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-medium text-stone-500">Seu Histórico</span>
+                                    ${this.state.history.answered > 0 ? `<button onclick="app.resetStats()" class="text-[11px] text-stone-400 hover:text-stone-700 underline">Zerar</button>` : ''}
+                                </div>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-2xl font-bold text-stone-900">${accuracy}%</span>
+                                    <span class="text-xs text-stone-500">de aproveitamento</span>
+                                </div>
+                                <p class="text-xs text-stone-500 mt-1">
+                                    ${this.state.history.correct} acertos em ${this.state.history.answered} questões
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Passo 1: Escolha do Eixo Temático -->
+                        <section class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-sm font-semibold uppercase tracking-wider text-stone-500">1. Selecione o Eixo Temático</h3>
+                                <span class="text-xs text-stone-500">${QUESTOES.length} questões no banco</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                <!-- Opção: Todos os Eixos -->
+                                <button onclick="app.selectEixo('todos')" class="text-left p-4 rounded-xl border transition-all ${this.state.selectedEixo === 'todos' ? 'bg-stone-800 text-white border-stone-800 shadow-xs' : 'bg-white text-stone-800 border-stone-200 hover:border-stone-400'}">
+                                    <div class="flex items-center justify-between mb-1.5">
+                                        <span class="text-xs font-semibold uppercase tracking-wider ${this.state.selectedEixo === 'todos' ? 'text-stone-300' : 'text-stone-500'}">Geral</span>
+                                        <span class="text-xs font-medium px-2 py-0.5 rounded-full ${this.state.selectedEixo === 'todos' ? 'bg-stone-700 text-stone-200' : 'bg-stone-100 text-stone-600'}">${QUESTOES.length} q.</span>
+                                    </div>
+                                    <div class="font-semibold text-base mb-1">Simulado Completo</div>
+                                    <p class="text-xs leading-relaxed ${this.state.selectedEixo === 'todos' ? 'text-stone-300' : 'text-stone-500'}">
+                                        Mistura questões dos 3 eixos como no dia da prova.
+                                    </p>
+                                </button>
+
+                                <!-- Cards dos 3 Eixos -->
+                                ${EIXOS.map((eixo, idx) => {
+                                    const count = QUESTOES.filter(q => q.eixoId === eixo.id).length;
+                                    const active = this.state.selectedEixo === eixo.id;
+                                    return `
+                                        <button onclick="app.selectEixo('${eixo.id}')" class="text-left p-4 rounded-xl border transition-all ${active ? 'bg-stone-800 text-white border-stone-800 shadow-xs' : 'bg-white text-stone-800 border-stone-200 hover:border-stone-400'}">
+                                            <div class="flex items-center justify-between mb-1.5">
+                                                <span class="text-xs font-semibold uppercase tracking-wider ${active ? 'text-stone-300' : 'text-stone-500'}">Eixo 0${idx + 1}</span>
+                                                <span class="text-xs font-medium px-2 py-0.5 rounded-full ${active ? 'bg-stone-700 text-stone-200' : 'bg-stone-100 text-stone-600'}">${count} q.</span>
+                                            </div>
+                                            <div class="font-semibold text-base mb-1">${eixo.nome}</div>
+                                            <p class="text-xs leading-relaxed ${active ? 'text-stone-300' : 'text-stone-500'}">
+                                                ${eixo.descricao}
+                                            </p>
+                                        </button>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </section>
+
+                        <!-- Passo 2: Filtro por Tema Específico (se um eixo for selecionado) -->
+                        ${currentEixoObj ? `
+                            <section class="space-y-3 fade-in">
+                                <h3 class="text-sm font-semibold uppercase tracking-wider text-stone-500">2. Filtrar por Tema de ${currentEixoObj.nome}</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="app.selectTema('todos')" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${this.state.selectedTema === 'todos' ? 'bg-stone-800 text-white border-stone-800' : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-100'}">
+                                        Todos os temas (${QUESTOES.filter(q => q.eixoId === currentEixoObj.id).length})
+                                    </button>
+                                    ${currentEixoObj.temas.map(tema => {
+                                        const count = QUESTOES.filter(q => q.eixoId === currentEixoObj.id && q.tema === tema).length;
+                                        const isSelected = this.state.selectedTema === tema;
+                                        return `
+                                            <button onclick="app.selectTema('${tema}')" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${isSelected ? 'bg-stone-800 text-white border-stone-800' : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-100'}">
+                                                ${tema} (${count})
+                                            </button>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </section>
+                        ` : ''}
+
+                        <!-- Passo 3: Modo de Simulado & Botão Iniciar -->
+                        <section class="bg-white border border-stone-200 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                            <div class="space-y-2">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-stone-500">Modo de Resolução</span>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="app.selectMode('treino')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium border transition-colors ${this.state.mode === 'treino' ? 'bg-stone-800 text-white border-stone-800' : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'}">
+                                        Estudo Guiado (gabarito na hora)
+                                    </button>
+                                    <button onclick="app.selectMode('prova')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium border transition-colors ${this.state.mode === 'prova' ? 'bg-stone-800 text-white border-stone-800' : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'}">
+                                        Modo Prova (resultado ao final)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button onclick="app.startQuiz()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold text-sm sm:text-base transition-all flex items-center justify-center gap-2 shadow-xs">
+                                <span>Iniciar Simulado (${filteredCount} ${filteredCount === 1 ? 'questão' : 'questões'})</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </button>
+                        </section>
+                    </div>
+                `;
+            },
+
+            // =========================================================================
+            // RENDERIZAÇÃO DA TELA DE QUESTÕES (SIMULADO)
+            // =========================================================================
+            renderQuiz() {
+                const container = document.getElementById('app-container');
+                const q = this.state.questions[this.state.currentIndex];
+                const eixoObj = EIXOS.find(e => e.id === q.eixoId);
+                const userAnswer = this.state.answers[q.id];
+                const isRevealed = this.state.mode === 'treino' && this.state.revealed[q.id];
+                const letters = ['A', 'B', 'C', 'D', 'E'];
+
+                container.innerHTML = `
+                    <div class="space-y-6 fade-in">
+                        <!-- Barra Superior de Progresso e Tempo -->
+                        <div class="bg-white border border-stone-200 rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm font-semibold text-stone-900">
+                                    Questão ${this.state.currentIndex + 1} de ${this.state.questions.length}
+                                </span>
+                                <span class="hidden sm:inline-block text-stone-300">|</span>
+                                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-stone-100 text-stone-700">
+                                    ${eixoObj ? eixoObj.nome : ''} • ${q.tema}
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="flex items-center gap-1.5 text-xs font-medium text-stone-600 bg-stone-100 px-3 py-1.5 rounded-lg">
+                                    <svg class="w-3.5 h-3.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <span id="quiz-timer">${this.formatTime(this.state.timerSeconds)}</span>
+                                </div>
+                                <button onclick="app.finishQuiz()" class="text-xs font-semibold text-stone-600 hover:text-stone-900 px-3 py-1.5 rounded-lg border border-stone-200 hover:bg-stone-50 transition-colors">
+                                    Finalizar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Navegador Rápido de Questões -->
+                        <div class="flex flex-wrap gap-1.5">
+                            ${this.state.questions.map((item, idx) => {
+                                const answered = this.state.answers[item.id] !== undefined;
+                                const isCurrent = idx === this.state.currentIndex;
+                                let btnClass = 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100';
+
+                                if (isCurrent) {
+                                    btnClass = 'bg-stone-800 text-white border-stone-800 font-semibold';
+                                } else if (this.state.mode === 'treino' && this.state.revealed[item.id]) {
+                                    const ok = this.state.answers[item.id] === item.correta;
+                                    btnClass = ok
+                                        ? 'bg-emerald-50 text-emerald-800 border-emerald-300 font-medium'
+                                        : 'bg-rose-50 text-rose-800 border-rose-300 font-medium';
+                                } else if (answered) {
+                                    btnClass = 'bg-stone-200 text-stone-900 border-stone-300 font-medium';
+                                }
+
+                                return `
+                                    <button onclick="app.jumpToQuestion(${idx})" class="w-8 h-8 rounded-lg text-xs border transition-colors ${btnClass}">
+                                        ${idx + 1}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Cartão da Questão -->
+                        <div class="bg-white border border-stone-200 rounded-2xl p-6 sm:p-8 space-y-6">
+                            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 pb-3">
+                                <span class="text-xs font-semibold text-stone-500">${q.origem}</span>
+                                <span class="text-xs text-stone-400">ID: ${q.id}</span>
+                            </div>
+
+                            <!-- Enunciado -->
+                            <div class="text-stone-800 text-base sm:text-[17px] leading-relaxed whitespace-pre-line">
+                                ${q.enunciado}
+                            </div>
+
+                            <!-- Ilustração SVG (quando houver) -->
+                            ${q.svg ? `<div>${q.svg}</div>` : ''}
+
+                            <!-- Alternativas A - E -->
+                            <div class="space-y-2.5 pt-2">
+                                ${q.alternativas.map((alt, idx) => {
+                                    const isSelected = userAnswer === idx;
+                                    const isCorrect = q.correta === idx;
+
+                                    let wrapperStyle = 'bg-white border-stone-200 hover:border-stone-400 hover:bg-stone-50 text-stone-800';
+                                    let badgeStyle = 'bg-stone-100 text-stone-700 border-stone-200';
+
+                                    if (isRevealed) {
+                                        if (isCorrect) {
+                                            wrapperStyle = 'bg-emerald-50/80 border-emerald-500 text-emerald-950 font-medium';
+                                            badgeStyle = 'bg-emerald-600 text-white border-emerald-600';
+                                        } else if (isSelected && !isCorrect) {
+                                            wrapperStyle = 'bg-rose-50/80 border-rose-400 text-rose-950';
+                                            badgeStyle = 'bg-rose-600 text-white border-rose-600';
+                                        } else {
+                                            wrapperStyle = 'bg-stone-50/50 border-stone-200 text-stone-400';
+                                            badgeStyle = 'bg-stone-100 text-stone-400 border-stone-200';
+                                        }
+                                    } else if (isSelected) {
+                                        wrapperStyle = 'bg-stone-100 border-stone-800 text-stone-900 font-medium';
+                                        badgeStyle = 'bg-stone-800 text-white border-stone-800';
+                                    }
+
+                                    return `
+                                        <button onclick="app.chooseOption(${idx})" ${isRevealed ? 'disabled' : ''} class="w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all flex items-start gap-3.5 ${wrapperStyle}">
+                                            <span class="w-7 h-7 rounded-lg border text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 transition-colors ${badgeStyle}">
+                                                ${letters[idx]}
+                                            </span>
+                                            <span class="text-sm sm:text-base leading-snug pt-0.5">${alt}</span>
+                                        </button>
+                                    `;
+                                }).join('')}
+                            </div>
+
+                            <!-- Gabarito Comentado (Modo Treino) -->
+                            ${isRevealed ? `
+                                <div class="mt-6 p-5 rounded-xl bg-stone-50 border border-stone-200 space-y-2 fade-in">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded ${userAnswer === q.correta ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                                            ${userAnswer === q.correta ? 'Resposta Correta' : `Incorreta • Gabarito: ${letters[q.correta]}`}
+                                        </span>
+                                        <span class="text-xs font-semibold text-stone-500">Resolução Passo a Passo</span>
+                                    </div>
+                                    <p class="text-sm text-stone-700 leading-relaxed whitespace-pre-line pt-1">${q.resolucao}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <!-- Controles Inferiores de Navegação -->
+                        <div class="flex items-center justify-between gap-4 pt-1">
+                            <button onclick="app.prevQuestion()" ${this.state.currentIndex === 0 ? 'disabled' : ''} class="px-5 py-3 rounded-xl border border-stone-200 bg-white text-stone-700 text-sm font-medium hover:bg-stone-100 disabled:opacity-40 disabled:pointer-events-none transition-colors">
+                                ← Anterior
+                            </button>
+
+                            <button onclick="app.nextQuestion()" class="px-6 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-sm font-semibold transition-colors">
+                                ${this.state.currentIndex === this.state.questions.length - 1 ? 'Concluir Simulado' : 'Próxima Questão →'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            },
+
+            // =========================================================================
+            // RENDERIZAÇÃO DA TELA DE RESULTADOS E REVISÃO
+            // =========================================================================
+            renderResult() {
+                const container = document.getElementById('app-container');
+                const total = this.state.questions.length;
+                let correct = 0;
+
+                // Agrupamento de desempenho por eixo
+                const eixoStats = {};
+                EIXOS.forEach(e => {
+                    eixoStats[e.id] = { nome: e.nome, total: 0, correct: 0 };
+                });
+
+                this.state.questions.forEach(q => {
+                    const isRight = this.state.answers[q.id] === q.correta;
+                    if (isRight) correct++;
+                    if (eixoStats[q.eixoId]) {
+                        eixoStats[q.eixoId].total++;
+                        if (isRight) eixoStats[q.eixoId].correct++;
+                    }
+                });
+
+                const pct = Math.round((correct / total) * 100);
+                const letters = ['A', 'B', 'C', 'D', 'E'];
+
+                container.innerHTML = `
+                    <div class="space-y-8 fade-in">
+                        <!-- Resumo Geral -->
+                        <div class="bg-white border border-stone-200 rounded-2xl p-6 sm:p-8">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-stone-100 pb-6">
+                                <div>
+                                    <span class="text-xs font-semibold uppercase tracking-wider text-stone-500">Relatório de Desempenho</span>
+                                    <h2 class="text-2xl sm:text-3xl font-bold text-stone-900 mt-1">Simulado Concluído</h2>
+                                    <p class="text-sm text-stone-600 mt-1">Tempo total: ${this.formatTime(this.state.timerSeconds)}</p>
+                                </div>
+
+                                <div class="flex items-center gap-5 bg-stone-50 border border-stone-200 rounded-xl px-6 py-4">
+                                    <div>
+                                        <div class="text-3xl font-bold text-stone-900">${correct}/${total}</div>
+                                        <div class="text-xs text-stone-500">Acertos</div>
+                                    </div>
+                                    <div class="h-10 w-px bg-stone-200"></div>
+                                    <div>
+                                        <div class="text-3xl font-bold text-stone-900">${pct}%</div>
+                                        <div class="text-xs text-stone-500">Aproveitamento</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Desempenho por Eixo Temático -->
+                            <div class="pt-6 space-y-3">
+                                <h3 class="text-xs font-semibold uppercase tracking-wider text-stone-500">Desempenho por Eixo do Edital</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    ${Object.values(eixoStats).filter(s => s.total > 0).map(stat => {
+                                        const eixoPct = Math.round((stat.correct / stat.total) * 100);
+                                        return `
+                                            <div class="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-2">
+                                                <div class="text-sm font-semibold text-stone-800">${stat.nome}</div>
+                                                <div class="flex items-center justify-between text-xs text-stone-600">
+                                                    <span>${stat.correct} de ${stat.total} acertos</span>
+                                                    <span class="font-semibold">${eixoPct}%</span>
+                                                </div>
+                                                <div class="w-full h-2 bg-stone-200 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-stone-800 rounded-full" style="width: ${eixoPct}%"></div>
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+
+                            <!-- Ações -->
+                            <div class="pt-6 flex flex-wrap gap-3">
+                                <button onclick="app.startQuiz()" class="px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-sm font-medium transition-colors">
+                                    Refazer este Simulado
+                                </button>
+                                <button onclick="app.goHome()" class="px-5 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-sm font-medium transition-colors">
+                                    Escolher Outro Eixo / Tema
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Revisão Detalhada das Questões -->
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-semibold uppercase tracking-wider text-stone-500">Gabarito e Resoluções Comentadas</h3>
+
+                            ${this.state.questions.map((q, idx) => {
+                                const userAns = this.state.answers[q.id];
+                                const isRight = userAns === q.correta;
+                                const statusLabel = userAns === undefined
+                                    ? 'Não respondida'
+                                    : (isRight ? 'Acertou' : `Marcou ${letters[userAns]}`);
+                                const statusBadge = userAns === undefined
+                                    ? 'bg-stone-100 text-stone-600'
+                                    : (isRight ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800');
+
+                                return `
+                                    <div class="bg-white border border-stone-200 rounded-2xl p-5 sm:p-6 space-y-3">
+                                        <div class="flex flex-wrap items-center justify-between gap-2">
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-sm font-bold text-stone-900">Questão ${idx + 1}</span>
+                                                <span class="text-xs text-stone-500">• ${q.tema}</span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-md ${statusBadge}">${statusLabel}</span>
+                                                <span class="text-xs font-bold px-2.5 py-0.5 rounded-md bg-stone-800 text-white">Gabarito: ${letters[q.correta]}</span>
+                                            </div>
+                                        </div>
+
+                                        <p class="text-sm text-stone-800 leading-relaxed">${q.enunciado}</p>
+
+                                        <div class="p-4 rounded-xl bg-stone-50 border border-stone-200 text-xs sm:text-sm text-stone-700 leading-relaxed whitespace-pre-line">
+                                            <strong class="text-stone-900 block mb-1">Resolução:</strong>${q.resolucao}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        };
+
+        // Inicializa a aplicação ao carregar a janela
+        window.onload = function () {
+            app.init();
+        };
+    </script>
+</body>
+</html>
